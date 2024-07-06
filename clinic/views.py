@@ -2,12 +2,6 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 
 def index(request):
-    teams = Team.objects.filter()
-    forms = Testimonial.objects.filter()
-    context = {
-        'forms' : forms,
-        'teams' : teams,
-    }
     return render(request, 'index.html', context)
 
 def about(request):
