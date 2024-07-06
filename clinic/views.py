@@ -2,7 +2,6 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.shortcuts import render, redirect
-from .forms import ContactForm, TestimonialForm, TeamForm
 from .models import Testimonial, Team
 
 def index(request):
