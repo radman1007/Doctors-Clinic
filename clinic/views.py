@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import ContactForm
+from . import forms
 
 def index(request):
     return render(request, 'index.html')
@@ -24,11 +24,11 @@ def testimonial(request):
 
 def contact(request):
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = forms.ContactForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('contact')
-    form = ContactForm()
+    form = forms.ContactForm()
     context = {
         'form' : form,
     }
