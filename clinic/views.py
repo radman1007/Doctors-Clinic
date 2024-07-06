@@ -20,10 +20,6 @@ def appointment(request):
     return render(request, 'appointment.html')
 
 def testimonial(request):
-    forms = Testimonial.objects.filter()
-    context = {
-        'forms' : forms
-    }
     return render(request, 'testimonial.html', context)
 
 def contact(request):
