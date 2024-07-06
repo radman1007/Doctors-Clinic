@@ -14,10 +14,6 @@ def feature(request):
     return render(request, 'feature.html')
 
 def team(request):
-    teams = Team.objects.filter()
-    context = {
-        'teams' : teams
-    }
     return render(request, 'team.html', context)
 
 def appointment(request):
