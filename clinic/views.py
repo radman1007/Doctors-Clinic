@@ -14,7 +14,7 @@ def feature(request):
     return render(request, 'feature.html')
 
 def team(request):
-    return render(request, 'team.html', context)
+    return render(request, 'team.html')
 
 def appointment(request):
     return render(request, 'appointment.html')
