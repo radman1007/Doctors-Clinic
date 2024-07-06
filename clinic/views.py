@@ -5,10 +5,6 @@ def index(request):
     return render(request, 'index.html', context)
 
 def about(request):
-    teams = Team.objects.filter()
-    context = {
-        'teams' : teams
-    }
     return render(request, 'about.html', context)
 
 def service(request):
