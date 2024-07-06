@@ -23,4 +23,4 @@ def testimonial(request):
     return render(request, 'testimonial.html', context)
 
 def contact(request):
-    return render(request, 'contact.html', context)
+    return render(request, 'contact.html')
