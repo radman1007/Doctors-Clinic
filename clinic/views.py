@@ -23,13 +23,4 @@ def testimonial(request):
     return render(request, 'testimonial.html', context)
 
 def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('contact')
-    form = ContactForm()
-    context = {
-        'form' : form,
-    }
     return render(request, 'contact.html', context)
