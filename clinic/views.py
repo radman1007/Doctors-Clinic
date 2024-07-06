@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from . import forms
+from . import models
 
 def index(request):
     return render(request, 'index.html')
@@ -20,6 +21,10 @@ def appointment(request):
     return render(request, 'appointment.html')
 
 def testimonial(request):
+    forms = models.Testimonial.objects.filter()
+    context = {
+        'forms' : forms
+    }
     return render(request, 'testimonial.html')
 
 def contact(request):
