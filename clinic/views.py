@@ -8,7 +8,7 @@ def about(request):
     return render(request, 'about.html', context)
 
 def service(request):
-    return render(request, 'service.html', context)
+    return render(request, 'service.html')
     
 def feature(request):
     return render(request, 'feature.html')
