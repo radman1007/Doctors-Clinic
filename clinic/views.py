@@ -8,10 +8,6 @@ def about(request):
     return render(request, 'about.html', context)
 
 def service(request):
-    forms = Testimonial.objects.filter()
-    context = {
-        'forms' : forms
-    }
     return render(request, 'service.html', context)
     
 def feature(request):
