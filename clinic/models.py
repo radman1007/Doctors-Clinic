@@ -13,3 +13,15 @@ class Contact(models.Model):
         ordering = ['-created_date']
     def __str__(self):
         return self.name
+    
+    
+class Testimonial(models.Model):
+    image = models.ImageField()
+    name = models.CharField(max_length=255)
+    phone = models.CharField(max_length=12)
+    subject = models.CharField(max_length=255)
+    message = models.TextField()
+    
+    def __str__(self):
+        return self.name
+    
