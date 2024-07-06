@@ -20,7 +20,7 @@ def appointment(request):
     return render(request, 'appointment.html')
 
 def testimonial(request):
-    return render(request, 'testimonial.html', context)
+    return render(request, 'testimonial.html')
 
 def contact(request):
     return render(request, 'contact.html')
