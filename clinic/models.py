@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 class Contact(models.Model):
     name = models.CharField(max_length=255)
@@ -51,7 +52,8 @@ class ReservationDay(models.Model):
     
     
 class Reservation(models.Model):
-    name = 
+    name = models.CharField(max_length=255)
+    
     day = models.ForeignKey(ReservationDay, on_delete=models.CASCADE, verbose_name=_("Day"), related_name='reservation')
     time = models.TimeField(_('Time'))
     
