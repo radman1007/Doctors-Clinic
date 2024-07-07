@@ -37,7 +37,7 @@ def testimonial(request):
     context = {
         'forms' : forms
     }
-    return render(request, 'testimonial.html')
+    return render(request, 'testimonial.html', context)
 
 def contact(request):
     if request.method == 'POST':
