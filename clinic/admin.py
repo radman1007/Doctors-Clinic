@@ -18,3 +18,11 @@ class TestimonialAdmin(admin.ModelAdmin):
 class TeamAdmin(admin.ModelAdmin):
     list_display = ('name', 'department')
     search_fields = ('name', 'department')
+    
+
+class InlineReservation(admin.StackedInline):
+    model = models.Reservation
+@admin.register(models.ReservationDay)
+class ReservationDateAdmin(admin.ModelAdmin):
+    list_display = ('date',)
+    inlines = (InlineReservation,)
