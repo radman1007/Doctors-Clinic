@@ -4,8 +4,10 @@ from . import models
 
 def index(request):
     teams = models.Team.objects.all()
+    forms = models.Testimonial.objects.all()
     context = {
-        'teams' : teams
+        'teams' : teams,
+        'forms' : forms,
     }
     return render(request, 'index.html', context)
 
