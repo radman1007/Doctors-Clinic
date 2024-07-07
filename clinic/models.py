@@ -53,7 +53,9 @@ class ReservationDay(models.Model):
     
 class Reservation(models.Model):
     name = models.CharField(max_length=255)
-    
+    email = models.EmailField(null=True, blank=True)
+    phone = models.CharField(max_length=12)
+    text = models.TextField()
     day = models.ForeignKey(ReservationDay, on_delete=models.CASCADE, verbose_name=_("Day"), related_name='reservation')
     time = models.TimeField(_('Time'))
     
@@ -63,4 +65,4 @@ class Reservation(models.Model):
         ordering = ('time',)
         
     def __str__(self):
-        return f"{self.user} : {self.day} - {self.time}"
+        return f"{self.name} : {self.day} - {self.time}"
