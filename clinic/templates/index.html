@@ -336,25 +336,27 @@
 
 
     <!-- Testimonial Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <p class="d-inline-block border rounded-pill py-1 px-4">Testimonial</p>
-                <h1>What Say Our Patients!</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
-                {% for form in forms %}
-                <div class="testimonial-item text-center">
-                    <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="{{form.image.url}}" style="width: 100px; height: 100px;">
-                    <div class="testimonial-text rounded text-center p-4">
-                        <p>{{form.message}}</p>
-                        <h5 class="mb-1">{{form.name}}</h5>
-                        <span class="fst-italic">{{form.subject}}</span>
-                    </div>
+    {% if forms %}
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+                    <p class="d-inline-block border rounded-pill py-1 px-4">Testimonial</p>
+                    <h1>What Say Our Patients!</h1>
                 </div>
-                {% endfor %}
+                <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+                    {% for form in forms %}
+                    <div class="testimonial-item text-center">
+                        <img class="img-fluid bg-light rounded-circle p-2 mx-auto mb-4" src="{{form.image.url}}" style="width: 100px; height: 100px;">
+                        <div class="testimonial-text rounded text-center p-4">
+                            <p>{{form.message}}</p>
+                            <h5 class="mb-1">{{form.name|capfirst}}</h5>
+                            <span class="fst-italic">{{form.subject}}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
+    {% endif %}
     <!-- Testimonial End -->
 {% endblock _body_ %}
