@@ -33,7 +33,7 @@ def appointment(request):
     return render(request, 'appointment.html')
 
 def testimonial(request):
-    forms = models.Testimonial.objects.filter()
+    forms = models.Testimonial.objects.all()
     context = {
         'forms' : forms
     }
