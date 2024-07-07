@@ -17,7 +17,11 @@ def about(request):
     return render(request, 'about.html', context)
 
 def service(request):
-    return render(request, 'service.html')
+    forms = models.Testimonial.objects.all()
+    context = {
+        'forms' : forms
+    }
+    return render(request, 'service.html', context)
     
 def feature(request):
     return render(request, 'feature.html')
