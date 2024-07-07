@@ -3,10 +3,18 @@ from . import forms
 from . import models
 
 def index(request):
-    return render(request, 'index.html')
+    teams = models.Team.objects.all()
+    context = {
+        'teams' : teams
+    }
+    return render(request, 'index.html', context)
 
 def about(request):
-    return render(request, 'about.html')
+    teams = models.Team.objects.all()
+    context = {
+        'teams' : teams
+    }
+    return render(request, 'about.html', context)
 
 def service(request):
     return render(request, 'service.html')
@@ -15,7 +23,11 @@ def feature(request):
     return render(request, 'feature.html')
 
 def team(request):
-    return render(request, 'team.html')
+    teams = models.Team.objects.all()
+    context = {
+        'teams' : teams
+    }
+    return render(request, 'team.html', context)
 
 def appointment(request):
     return render(request, 'appointment.html')
