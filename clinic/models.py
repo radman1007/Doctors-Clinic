@@ -62,7 +62,7 @@ class Reservation(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(null=True, blank=True)
     phone = models.CharField(max_length=12)
-    doctor = models.CharField(max_length=255, choices=DOCTOR_CHOICES, default='D1')
+    doctor = models.CharField(max_length=255, choices=DOCTOR_CHOICES)
     text = models.TextField()
     day = models.ForeignKey(ReservationDay, on_delete=models.CASCADE, verbose_name=_("Day"), related_name='reservation')
     time = models.TimeField(_('Time'))
