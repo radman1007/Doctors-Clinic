@@ -12,3 +12,9 @@ class ContactAdmin(admin.ModelAdmin):
 @admin.register(models.Testimonial)
 class TestimonialAdmin(admin.ModelAdmin):
     list_display = ('name', 'phone', 'subject')
+    
+  
+@admin.register(models.Team)  
+class TeamAdmin(admin.ModelAdmin):
+    list_display = ('name', 'department')
+    search_fields = ('name', 'department')
