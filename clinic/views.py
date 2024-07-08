@@ -19,9 +19,14 @@ def about(request):
     return render(request, 'about.html', context)
 
 def service(request):
-    forms = models.Testimonial.objects.all()
+    tests = models.Testimonial.objects.all()
+    if request.method == 'POST':
+        form = forms.ReserveForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
     context = {
-        'forms' : forms
+        'tests' : tests
     }
     return render(request, 'service.html', context)
     
