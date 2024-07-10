@@ -78,6 +78,6 @@ class Reservation(models.Model):
     
     
 class FreeReservation(models.Model):
-    day = models.ForeignKey(ReservationDay, on_delete=models.CASCADE,verbose_name=_("Day"))
+    day = models.ForeignKey(ReservationDay, on_delete=models.CASCADE, verbose_name=_("Day"))
     time = models.TimeField()
     is_reserved = models.BooleanField(default=False)
