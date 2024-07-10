@@ -28,7 +28,6 @@ def service(request):
         time = request.POST.get('time')
         reserves = models.FreeReservation.objects.filter(day=day, is_reserved=False)
         form = forms.ReserveForm(request.POST)
-        print(request.POST)
         if form.is_valid():
             form.save()
             x = models.FreeReservation.objects.get(day=day, time=time)
