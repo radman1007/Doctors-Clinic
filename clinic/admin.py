@@ -31,3 +31,4 @@ class ReservationDateAdmin(admin.ModelAdmin):
 @admin.register(models.Reservation)
 class ReservationAdmin(admin.ModelAdmin):
     list_display = ('name', 'phone', 'day', 'time')
+    ordering = ('day',)
