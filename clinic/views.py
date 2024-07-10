@@ -46,9 +46,9 @@ def service(request):
         form = forms.ReserveForm(request.POST)
         if form.is_valid():
             form.save()
-            x = models.FreeReservation.objects.get(day=day, time=time)
-            x.is_reserved=True
-            x.save()
+            reserve_form = models.FreeReservation.objects.get(day=day, time=time)
+            reserve_form.is_reserved=True
+            reserve_form.save()
             return redirect('index')
     context = {
         'tests' : tests,
