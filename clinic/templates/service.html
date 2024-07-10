@@ -149,7 +149,7 @@
                                     </div> {% endcomment %}
                                     <form action="" method="POST">
                                         {% csrf_token %}
-                                        <select name='day' class="form-select border-0" style="height: 55px;">
+                                        <select name='day' class="form-select border-0" style="height: 55px;" required="true">
                                             <option selected>Choose Day</option>
                                             {% for day_reserve in day_reserves %}
                                                 <option value="{{ day_reserve.date|date:'Y-m-d' }}">{{ day_reserve.date|date:'Y-m-d' }}</option>
