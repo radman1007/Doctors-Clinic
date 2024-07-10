@@ -27,6 +27,7 @@ class ReservationDateAdmin(admin.ModelAdmin):
     list_display = ('date',)
     inlines = (InlineReservation,)
 
+
 @admin.register(models.Reservation)
 class ReservationAdmin(admin.ModelAdmin):
     list_display = ('name', 'phone', 'day', 'time')
