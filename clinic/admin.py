@@ -20,12 +20,12 @@ class TeamAdmin(admin.ModelAdmin):
     search_fields = ('name', 'department')
     
 
-# class InlineReservation(admin.StackedInline):
-#     model = models.Reservation
-# @admin.register(models.ReservationDay)
-# class ReservationDateAdmin(admin.ModelAdmin):
-#     list_display = ('date',)
-#     inlines = (InlineReservation,)
+class InlineReservation(admin.StackedInline):
+    model = models.FreeReservation
+@admin.register(models.ReservationDay)
+class ReservationDateAdmin(admin.ModelAdmin):
+    list_display = ('date',)
+    inlines = (InlineReservation,)
 
 @admin.register(models.Reservation)
 class ReservationAdmin(admin.ModelAdmin):

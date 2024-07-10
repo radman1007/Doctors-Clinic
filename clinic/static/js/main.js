@@ -93,6 +93,14 @@
         }
     });
 
-    
+    // const input = document.querySelector('.hossein')
+    // input.addEventListener("change" ,(e)=>{
+    //     e.preventDefault()
+    //     fetch('/service', {
+    //         method:"POST",
+    //         body:e.target.value,
+    //     })
+    // })
+
 })(jQuery);
 

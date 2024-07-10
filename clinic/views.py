@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from . import forms
 from . import models
 
@@ -20,13 +20,30 @@ def about(request):
 
 def service(request):
     tests = models.Testimonial.objects.all()
+    reserves = None
     if request.method == 'POST':
+        day = request.POST.get('day')
+        day = get_object_or_404(models.ReservationDay,date=day)
+        time = request.POST.get('time')
+        # doctor = request.POST.get('doctor')
+        # text = request.POST.get('text')
+        # name = request.POST.get('name')
+        # phone = request.POST.get('phone')
+        # email = request.POST.get('email')
+        # models.Reservation.objects.create(name=name,email=email,phone=phone,doctor=doctor,text=text,day=day,time=time)
+        reserves = models.FreeReservation.objects.filter(day=day, is_reserved=False)
         form = forms.ReserveForm(request.POST)
+        print(request.POST)
         if form.is_valid():
+            print('hhhhhhhhhh')
             form.save()
+            x = models.FreeReservation.objects.get(day=day, time=time)
+            x.is_reserved=True
+            x.save()
             return redirect('index')
     context = {
-        'tests' : tests
+        'tests' : tests,
+        'reserves' : reserves,
     }
     return render(request, 'service.html', context)
     

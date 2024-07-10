@@ -10,4 +10,4 @@ class ContactForm(forms.ModelForm):
 class ReserveForm(forms.ModelForm):
     class Meta:
         model = models.Reservation
-        fields = ('name', 'email', 'phone', 'doctor', 'text')
+        fields = '__all__'

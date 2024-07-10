@@ -39,16 +39,16 @@ class Team(models.Model):
         return self.name
 
 
-# class ReservationDay(models.Model):
-#     date = models.DateField(_("Date"))
+class ReservationDay(models.Model):
+    date = models.DateField(_("Date"))
     
-#     class Meta:
-#         verbose_name = _("Reservation Day")
-#         verbose_name_plural = _("Reservation Days")
-#         ordering = ('-date',)
+    class Meta:
+        verbose_name = _("Reservation Day")
+        verbose_name_plural = _("Reservation Days")
+        ordering = ('-date',)
         
-#     def __str__(self):
-#         return self.date
+    def __str__(self):
+        return f"{self.date}"
     
     
 DOCTOR_CHOICES = (
@@ -66,6 +66,7 @@ class Reservation(models.Model):
     text = models.TextField()
     day = models.DateField(verbose_name=_("Day"))
     time = models.TimeField(_('Time'))
+    # is_reserved = models.BooleanField(default=True)
     
     class Meta:
         verbose_name = _("Reservation")
@@ -74,3 +75,9 @@ class Reservation(models.Model):
         
     def __str__(self):
         return f"{self.name} : {self.day} - {self.time}"
+    
+    
+class FreeReservation(models.Model):
+    day = models.ForeignKey(ReservationDay, on_delete=models.CASCADE,verbose_name=_("Day"))
+    time = models.TimeField()
+    is_reserved = models.BooleanField(default=False)
