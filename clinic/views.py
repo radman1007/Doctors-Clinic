@@ -20,7 +20,7 @@ def about(request):
 
 def service(request):
     tests = models.Testimonial.objects.all()
-    reserves = None
+    reserves = models.FreeReservation.objects.all()
     if request.method == 'POST':
         day = request.POST.get('day')
         day = get_object_or_404(models.ReservationDay,date=day)
