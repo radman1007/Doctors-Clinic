@@ -68,21 +68,39 @@
                                     </select>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <div class="date" id="date" data-target-input="nearest">
+                                    {% comment %} <div class="date" id="date" data-target-input="nearest">
                                         <input name='day' type="text"
-                                            class="form-control border-0 datetimepicker-input"
+                                            class="form-control border-0 datetimepicker-input hossein"
                                             placeholder="Choose Day" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
-                                    </div>
+                                    </div> {% endcomment %}
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        <select name='day' class="form-select border-0" style="height: 55px;" required="true">
+                                            {% for day_reserve in day_reserves %}
+                                                <option selected value="{{ day_reserve.date|date:'Y-m-d' }}">{{ day_reserve.date|date:'Y-m-d' }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        {% if reserves %}
+                                            <button class="btn" type="submit">Change day? Click here</button>
+                                        {% else %}
+                                            <button class="btn" type="submit">Select day and Click here to see time</button>
+                                        {% endif %}
+                                    </form>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <div class="time" id="time" data-target-input="nearest">
-                                        <input name='time' type="text"
-                                            class="form-control border-0 datetimepicker-input"
-                                            placeholder="Choose Time" data-target="#time" data-toggle="datetimepicker" style="height: 55px;">
-                                    </div>
+                                    <select name='time' class="form-select border-0" style="height: 55px;">
+                                        <option selected>Choose Time</option>
+                                        {% if reserves %}
+                                            {% for reserve in reserves %}
+                                                <option value="{{ reserve.time|date:'H:i:s' }}">{{ reserve.time|date:'H:i:s' }}</option>
+                                            {% endfor %}
+                                        {% else %}
+                                            <option value="">Please choose another day</option>
+                                        {% endif %}
+                                    </select>
                                 </div>
                                 <div class="col-12">
-                                    <textarea name='test' class="form-control border-0" rows="5" placeholder="Describe your problem"></textarea>
+                                    <textarea name='text' class="form-control border-0" rows="5" placeholder="Describe your problem"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100 py-3" type="submit">Book Appointment</button>
