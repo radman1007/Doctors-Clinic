@@ -5,9 +5,25 @@ from . import models
 def index(request):
     teams = models.Team.objects.all()
     forms = models.Testimonial.objects.all()
+    reserves = None
+    day_reserves = models.ReservationDay.objects.all()
+    if request.method == 'POST':
+        day = request.POST.get('day')
+        day = get_object_or_404(models.ReservationDay, date=day)
+        time = request.POST.get('time')
+        reserves = models.FreeReservation.objects.filter(day=day, is_reserved=False)
+        form = forms.ReserveForm(request.POST)
+        if form.is_valid():
+            form.save()
+            x = models.FreeReservation.objects.get(day=day, time=time)
+            x.is_reserved=True
+            x.save()
+            return redirect('index')
     context = {
         'teams' : teams,
         'forms' : forms,
+        'reserves' : reserves,
+        'day_reserves' : day_reserves,
     }
     return render(request, 'index.html', context)
 
