@@ -307,11 +307,6 @@
                                     </select>
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    {% comment %} <div class="date" id="date" data-target-input="nearest">
-                                        <input name='day' type="text"
-                                            class="form-control border-0 datetimepicker-input hossein"
-                                            placeholder="Choose Day" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
-                                    </div> {% endcomment %}
                                     <form action="" method="POST">
                                         {% csrf_token %}
                                         <select name='day' class="form-select border-0" style="height: 55px;" required="true">
