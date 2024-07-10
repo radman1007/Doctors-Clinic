@@ -52,7 +52,25 @@ def team(request):
     return render(request, 'team.html', context)
 
 def appointment(request):
-    return render(request, 'appointment.html')
+    reserves = None
+    day_reserves = models.ReservationDay.objects.all()
+    if request.method == 'POST':
+        day = request.POST.get('day')
+        day = get_object_or_404(models.ReservationDay, date=day)
+        time = request.POST.get('time')
+        reserves = models.FreeReservation.objects.filter(day=day, is_reserved=False)
+        form = forms.ReserveForm(request.POST)
+        if form.is_valid():
+            form.save()
+            x = models.FreeReservation.objects.get(day=day, time=time)
+            x.is_reserved=True
+            x.save()
+            return redirect('index')
+    context = {
+        'reserves' : reserves,
+        'day_reserves' : day_reserves,
+    }
+    return render(request, 'appointment.html', context)
 
 def testimonial(request):
     forms = models.Testimonial.objects.all()
