@@ -66,7 +66,7 @@ class Reservation(models.Model):
     text = models.TextField()
     day = models.DateField(verbose_name=_("Day"))
     time = models.TimeField(_('Time'))
-    # is_reserved = models.BooleanField(default=True)
+
     
     class Meta:
         verbose_name = _("Reservation")
