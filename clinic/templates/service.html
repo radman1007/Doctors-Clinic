@@ -147,12 +147,15 @@
                                             class="form-control border-0 datetimepicker-input hossein"
                                             placeholder="Choose Day" data-target="#date" data-toggle="datetimepicker" style="height: 55px;">
                                     </div> {% endcomment %}
-                                    <select name='day' class="form-select border-0" style="height: 55px;">
-                                        <option selected>Choose Day</option>
-                                        {% for day_reserve in day_reserves %}
-                                            <option value="{{ day_reserve.date|date:'Y-m-d' }}">{{ day_reserve.date|date:'Y-m-d' }}</option>
-                                        {% endfor %}
-                                    </select>
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        <select name='day' class="form-select border-0" style="height: 55px;">
+                                            <option selected>Choose Day</option>
+                                            {% for day_reserve in day_reserves %}
+                                                <option value="{{ day_reserve.date|date:'Y-m-d' }}">{{ day_reserve.date|date:'Y-m-d' }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </form>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <select name='time' class="form-select border-0" style="height: 55px;">
