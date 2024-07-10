@@ -150,20 +150,23 @@
                                     <form action="" method="POST">
                                         {% csrf_token %}
                                         <select name='day' class="form-select border-0" style="height: 55px;" required="true">
-                                            <option selected>Choose Day</option>
                                             {% for day_reserve in day_reserves %}
-                                                <option value="{{ day_reserve.date|date:'Y-m-d' }}">{{ day_reserve.date|date:'Y-m-d' }}</option>
+                                                <option selected value="{{ day_reserve.date|date:'Y-m-d' }}">{{ day_reserve.date|date:'Y-m-d' }}</option>
                                             {% endfor %}
                                         </select>
-                                        <button class="btn" type="submit">Select day to see time</button>
+                                        <button class="btn" type="submit">Select day and Click here to see time</button>
                                     </form>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <select name='time' class="form-select border-0" style="height: 55px;">
                                         <option selected>Choose Time</option>
-                                        {% for reserve in reserves %}
-                                            <option value="{{ reserve.time|date:'H:i:s' }}">{{ reserve.time|date:'H:i:s' }}</option>
-                                        {% endfor %}
+                                        {% if reserves %}
+                                            {% for reserve in reserves %}
+                                                <option value="{{ reserve.time|date:'H:i:s' }}">{{ reserve.time|date:'H:i:s' }}</option>
+                                            {% endfor %}
+                                        {% else %}
+                                            <option value="">Please choose another day</option>
+                                        {% endif %}
                                     </select>
                                 </div>
                                 <div class="col-12">
