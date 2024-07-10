@@ -154,7 +154,11 @@
                                                 <option selected value="{{ day_reserve.date|date:'Y-m-d' }}">{{ day_reserve.date|date:'Y-m-d' }}</option>
                                             {% endfor %}
                                         </select>
-                                        <button class="btn" type="submit">Select day and Click here to see time</button>
+                                        {% if reserves %}
+                                            <button class="btn" type="submit">Change day? Click here</button>
+                                        {% else %}
+                                            <button class="btn" type="submit">Select day and Click here to see time</button>
+                                        {% endif %}
                                     </form>
                                 </div>
                                 <div class="col-12 col-sm-6">
