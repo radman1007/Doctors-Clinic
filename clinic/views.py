@@ -20,7 +20,8 @@ def about(request):
 
 def service(request):
     tests = models.Testimonial.objects.all()
-    reserves = models.FreeReservation.objects.all()
+    reserves = None
+    day_reserves = models.ReservationDay.objects.all()
     if request.method == 'POST':
         day = request.POST.get('day')
         day = get_object_or_404(models.ReservationDay,date=day)
@@ -37,6 +38,7 @@ def service(request):
     context = {
         'tests' : tests,
         'reserves' : reserves,
+        'day_reserves' : day_reserves,
     }
     return render(request, 'service.html', context)
     
