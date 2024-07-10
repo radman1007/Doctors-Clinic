@@ -4,7 +4,7 @@ from . import models
 
 def index(request):
     teams = models.Team.objects.all()
-    forms = models.Testimonial.objects.all()
+    tests = models.Testimonial.objects.all()
     reserves = None
     day_reserves = models.ReservationDay.objects.all()
     if request.method == 'POST':
@@ -21,7 +21,7 @@ def index(request):
             return redirect('index')
     context = {
         'teams' : teams,
-        'forms' : forms,
+        'tests' : tests,
         'reserves' : reserves,
         'day_reserves' : day_reserves,
     }
