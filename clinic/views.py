@@ -24,7 +24,7 @@ def service(request):
     day_reserves = models.ReservationDay.objects.all()
     if request.method == 'POST':
         day = request.POST.get('day')
-        day = get_object_or_404(models.ReservationDay,date=day)
+        day = get_object_or_404(models.ReservationDay, date=day)
         time = request.POST.get('time')
         reserves = models.FreeReservation.objects.filter(day=day, is_reserved=False)
         form = forms.ReserveForm(request.POST)
