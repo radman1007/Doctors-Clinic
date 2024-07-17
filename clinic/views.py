@@ -35,6 +35,7 @@ def about(request):
     return render(request, 'about.html', context)
 
 def service(request):
+    day = None
     tests = models.Testimonial.objects.all()
     reserves = None
     day_reserves = models.ReservationDay.objects.all()
@@ -54,7 +55,9 @@ def service(request):
         'tests' : tests,
         'reserves' : reserves,
         'day_reserves' : day_reserves,
+        'day' : day,
     }
+    print(day)
     return render(request, 'service.html', context)
     
 def feature(request):
